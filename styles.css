@@ -1,0 +1,41 @@
+:root {
+  --blue: #5e7892;
+  --dark_blue: #231b3a;
+  --grey: #a7b7c6;
+  --light_brown: #f3efdf;
+  --green: #bdcfaa;
+  --dark_green: #8e9e83;
+}
+
+table {
+  width: 90%;
+  border-collapse: collapse;
+  color: var(--dark_blue);
+}
+
+th {
+  height: 40px;
+  font-size: 24px;
+  background-color: var(--blue);
+  text-align: left;
+}
+
+td {
+  height: 30px;
+  font-size: 18px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+th,
+td {
+  padding: 15px;
+}
+
+tr:nth-child(even) {
+  background-color: var(--green);
+}
+
+tr:nth-child(odd) {
+  background-color: var(--dark_green);
+}
