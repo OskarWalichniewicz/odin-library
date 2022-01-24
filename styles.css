@@ -7,8 +7,22 @@
   --dark_green: #8e9e83;
 }
 
+html {
+  background-color: var(--light_brown);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.table_container {
+  width: 80%;
+}
+
 table {
-  width: 90%;
+  width: 100%;
   border-collapse: collapse;
   color: var(--dark_blue);
 }
@@ -16,8 +30,8 @@ table {
 th {
   height: 40px;
   font-size: 24px;
-  background-color: var(--blue);
   text-align: left;
+  border-bottom: 3px solid var(--dark_green);
 }
 
 td {
@@ -25,6 +39,12 @@ td {
   font-size: 18px;
   text-align: left;
   vertical-align: middle;
+  border-bottom: 1px solid var(--green);
+}
+
+.centered_column,
+.centered_first_row {
+  text-align: center;
 }
 
 th,
@@ -32,10 +52,22 @@ td {
   padding: 15px;
 }
 
-tr:nth-child(even) {
-  background-color: var(--green);
+.remove_button {
+  background-color: red;
+  vertical-align: middle;
 }
 
-tr:nth-child(odd) {
-  background-color: var(--dark_green);
+.read_status_table_checkbox {
+  visibility: hidden;
+}
+
+input[type="checkbox"] + label {
+  color: red;
+  width: 10px;
+  height: 10px;
+  user-select: none;
+}
+
+input[type="checkbox"]:checked + label {
+  color: blue;
 }

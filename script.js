@@ -35,14 +35,20 @@ function displayBooks(booksArray) {
     bookAuthor.appendChild(bookAuthorText);
 
     const bookNumberOfPages = document.createElement('td');
+    bookNumberOfPages.classList.add('centered_column');
     const bookNumberOfPagesText = document.createTextNode(booksArray[book].numberOfPages);
     bookNumberOfPages.appendChild(bookNumberOfPagesText);
 
     const bookReadStatus = document.createElement('td');
-    const bookReadStatusButton = createReadButton(booksArray[book].readStatus);
+    bookReadStatus.classList.add('centered_column');
+    const bookReadStatusButtonList = createReadButton(booksArray[book].readStatus, book, booksArray);
+    const bookReadStatusButton = bookReadStatusButtonList[0];
+    const bookReadStatusButtonLabel = bookReadStatusButtonList[1];
     bookReadStatus.appendChild(bookReadStatusButton);
+    bookReadStatus.appendChild(bookReadStatusButtonLabel);
 
     const bookRemove = document.createElement('td');
+    bookRemove.classList.add('centered_column');
     const bookRemoveButton = createRemoveButton();
     bookRemove.appendChild(bookRemoveButton);
 
@@ -56,19 +62,40 @@ function displayBooks(booksArray) {
   }
 }
 
-function createReadButton(readStatus) {
+function createReadButton(readStatus, index, booksArray) {
   const bookReadStatusButton = document.createElement('input');
+  bookReadStatusButton.classList.add('read_status_table_checkbox');
+  bookReadStatusButton.id = index;
   bookReadStatusButton.type = 'checkbox';
+  const bookReadStatusButtonLabel = document.createElement('label');
+  bookReadStatusButtonLabel.htmlFor = index;
+  bookReadStatusButtonLabel.classList.add('read_status_table_label');
   if(readStatus) {
     bookReadStatusButton.checked = true;
+    bookReadStatusButtonLabel.textContent = 'Read';
+  } else {
+    bookReadStatusButtonLabel.textContent = 'Not read';
   }
-  return bookReadStatusButton;
+
+  // If someone presses checkbox
+  bookReadStatusButton.addEventListener('change', (event) => {
+    if(event.currentTarget.checked) {
+      // If it was unchecked (unread) and now it is read, then it 
+      // changes its text content and Object readStatus
+      bookReadStatusButtonLabel.textContent = 'Read';
+      booksArray[index].readStatus = true;
+    } else {
+      bookReadStatusButtonLabel.textContent = 'Not read';
+      booksArray[index].readStatus = false;
+    }
+  });
+
+  return [bookReadStatusButton, bookReadStatusButtonLabel];
 }
 
 function createRemoveButton() {
   const bookRemoveButton = document.createElement('button');
-  bookRemoveButton.style.backgroundColor = 'red';
-  bookRemoveButton.style.verticalAlign = 'middle';
+  bookRemoveButton.classList.add('remove_button');
   return bookRemoveButton;
 }
 
