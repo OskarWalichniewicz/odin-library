@@ -5,20 +5,43 @@
   --light_brown: #f3efdf;
   --green: #bdcfaa;
   --dark_green: #8e9e83;
+  --red: #b80606;
+  --dark_red: #520202;
 }
 
 html {
   background-color: var(--light_brown);
 }
 
-body {
+.main_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu_container {
+  width: 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+
+.add_book {
+  padding: 0;
+  min-width: 10px;
+  width: 150px;
+  height: 36px;
+  border-radius: 10px;
+  background-color: var(--grey);
+  color: var(--dark_blue);
+  border: 3px solid var(--dark_blue);
+  line-height: 30px;
+  font-size: 19px;
+  font-family: "Pragati Narrow", sans-serif;
 }
 
 .table_container {
-  width: 80%;
+  width: 85%;
 }
 
 table {
@@ -32,14 +55,16 @@ th {
   font-size: 24px;
   text-align: left;
   border-bottom: 3px solid var(--dark_green);
+  font-family: "Turret Road", cursive;
 }
 
 td {
   height: 30px;
-  font-size: 18px;
+  font-size: 19px;
   text-align: left;
   vertical-align: middle;
   border-bottom: 1px solid var(--green);
+  font-family: "Pragati Narrow", sans-serif;
 }
 
 .centered_column,
@@ -53,8 +78,18 @@ td {
 }
 
 .remove_button {
-  background-color: red;
-  vertical-align: middle;
+  font-size: 19px;
+  font-family: "Pragati Narrow", sans-serif;
+  display: inline-block;
+  border: 3px var(--dark_red) solid;
+  background-color: var(--red);
+  border-radius: 10px;
+  line-height: 30px;
+  padding: 0px;
+  color: var(--light_brown);
+  /* width and height needs to be with added borders! */
+  width: 106px;
+  height: 36px;
 }
 
 .read_status_table_checkbox {
@@ -62,12 +97,19 @@ td {
 }
 
 input[type="checkbox"] + label {
-  color: red;
-  width: 10px;
-  height: 10px;
+  color: var(--light_brown);
+  background-color: var(--blue);
+  border: 3px var(--dark_blue) solid;
+  border-radius: 10px;
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
   user-select: none;
 }
 
 input[type="checkbox"]:checked + label {
-  color: blue;
+  color: var(--dark_blue);
+  background-color: var(--green);
+  border: 3px var(--dark_green) solid;
 }
