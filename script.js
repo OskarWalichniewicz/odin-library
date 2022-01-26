@@ -112,6 +112,46 @@ function createRemoveButton(booksArray) {
   return bookRemoveButton;
 }
 
+const popup = document.querySelector(".new_book_popup");
+
+const addBookButton = document.querySelector(".add_book");
+addBookButton.addEventListener("click", () => {
+  popup.classList.add("show");
+});
+
+const closeNewBookPopupButton = document.querySelector(".close_form_button");
+closeNewBookPopupButton.addEventListener("click", () => {
+  popup.classList.remove("show");
+});
+
+const submitNewBookButton = document.querySelector(".add_new_book_form_button");
+submitNewBookButton.addEventListener("click", () => {
+  const titleInput = document.querySelector("#ftitle");
+  const authorInput = document.querySelector("#fauthor");
+  const pagesInput = document.querySelector("#fpages");
+  const readInput = document.querySelector("#fread");
+  if (
+    titleInput.value === "" ||
+    authorInput.value === "" ||
+    pagesInput === ""
+  ) {
+    alert("Please fill all the fields!");
+    return;
+  }
+  const newBook = new Book(
+    titleInput.value,
+    authorInput.value,
+    pagesInput.value,
+    readInput.checked
+  );
+  addBookToLibrary(myLibrary, newBook);
+  while (displayTable.firstChild) {
+    displayTable.firstChild.remove();
+  }
+  displayBooks(myLibrary);
+  popup.classList.remove("show");
+});
+
 const hobbit = new Book("The Hobbit", "J.R.R Tolkien", 295, false);
 addBookToLibrary(myLibrary, hobbit);
 
